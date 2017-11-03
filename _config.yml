@@ -1,0 +1,12 @@
+title: Orizuru
+description: "Making it easy to add Heroku compute power to your Salesforce Applications"
+
+exclude:
+  - README.md
+  - Gemfile
+  - CNAME
+  - Script
+include:
+  - _pages
+
+theme: jekyll-theme-cayman
