@@ -3,9 +3,23 @@
 
 @import "{{ site.theme }}";
 
+// block colours
+$black: #000000;
+$ink: #333333;
+$medium-blue: #005FB2;
+$light-blue: #0C8EFF;
+$snow: #FFFFFF;
+
+// transparent colours
+$black-thick-glass: rbga(0, 0, 0, 0.8);
+$black-medium-glass: rbga(0, 0, 0, 0.3);
+$black-thin-glass: rbga(0, 0, 0, 0.2);
+$black-thinnest-glass: rbga(0, 0, 0, 0.1);
+$blue-glass: rbga(0, 57, 107, 0.2);
+
 .page-header {
-    background-color: #005FB2;
-    background-image: linear-gradient(120deg, #0C8EFF, #005FB2);
+    background-color: $medium-blue;
+    background-image: linear-gradient(120deg, $light-blue, darken($light-blue, 20%));
     -webkit-font-smoothing: antialiased;
 }
 
@@ -35,15 +49,15 @@
     float: right;
     & a {
         margin: 0;
-        color: rgba(0, 0, 0, 0.7);
-        background-color: rgba(0, 0, 0, 0.08);
-        border-color: rgba(0, 0, 0, 0.2);
+        color: $black-thick-glass;
+        background-color: $black-thinnest-glass;
+        border-color: $black-thin-glass;
     }
     & a:hover {
-        color: rgba(0, 0, 0, 0.8);
+        color: $black-thick-glass;
         text-decoration: none;
-        background-color: rgba(0, 0, 0, 0.2);
-        border-color: rgba(0, 0, 0, 0.3);
+        background-color: $black-thin-glass;
+        border-color: $black-medium-glass;
     }
 }
 
@@ -60,15 +74,15 @@
     line-height: 1.1rem;
     padding: 0.3rem 0.5rem;
     border-radius: 0.3rem;
-    color: #FFFFFF;
+    color: $snow;
     text-decoration: none;
     margin: 10px;
     &.active,
     &:hover {
-        background-color: rgba(0, 57, 107, 0.2);
+        background-color: $blue-glass;
     }
     &.active {
-        border: 1px solid #005FB2;
+        border: 1px solid $medium-blue;
         pointer-events: none;
     }
 }
@@ -79,7 +93,7 @@
 .main-content h4,
 .main-content h5,
 .main-content h6 {
-    color: #005FB2;
+    color: $medium-blue;
 }
 
 .main-content h1:first-of-type {
