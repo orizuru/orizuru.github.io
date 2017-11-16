@@ -2,6 +2,7 @@
 title: Welcome to Orizuru
 permalink: /
 layout: default
+isHomepage: true
 lang: en
 ---
 
