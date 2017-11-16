@@ -20,6 +20,7 @@ defaults:
       type: docs
   values:
       layout: default
+      isDoc: true
 
 sass:
   sass_dir: _sass

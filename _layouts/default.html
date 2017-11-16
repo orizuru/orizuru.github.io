@@ -7,6 +7,10 @@
       {% include hero.html %}
     {% endif %}
 
+    {% if page.isDoc %}
+      {% include doc-sidebar.html %}
+    {% endif %}
+
     <section class="main-content">
       {% if page.repo_url %}
       <div class="repo-controls">
