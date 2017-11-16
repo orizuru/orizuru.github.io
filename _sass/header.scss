@@ -1,22 +1,3 @@
----
----
-
-@import "{{ site.theme }}";
-
-// block colours
-$black: #000000;
-$ink: #333333;
-$medium-blue: #005FB2;
-$light-blue: #0C8EFF;
-$snow: #FFFFFF;
-
-// transparent colours
-$black-thick-glass: rbga(0, 0, 0, 0.8);
-$black-medium-glass: rbga(0, 0, 0, 0.3);
-$black-thin-glass: rbga(0, 0, 0, 0.2);
-$black-thinnest-glass: rbga(0, 0, 0, 0.1);
-$blue-glass: rbga(0, 57, 107, 0.2);
-
 .page-header {
     background-color: $medium-blue;
     background-image: linear-gradient(120deg, $light-blue, darken($light-blue, 20%));
@@ -45,22 +26,6 @@ $blue-glass: rbga(0, 57, 107, 0.2);
     }
 }
 
-.repo-controls {
-    float: right;
-    & a {
-        margin: 0;
-        color: $black-thick-glass;
-        background-color: $black-thinnest-glass;
-        border-color: $black-thin-glass;
-    }
-    & a:hover {
-        color: $black-thick-glass;
-        text-decoration: none;
-        background-color: $black-thin-glass;
-        border-color: $black-medium-glass;
-    }
-}
-
 .header-nav {
     display: -webkit-flex;
     -webkit-flex-wrap: wrap;
@@ -85,17 +50,4 @@ $blue-glass: rbga(0, 57, 107, 0.2);
         border: 1px solid $medium-blue;
         pointer-events: none;
     }
-}
-
-.main-content h1,
-.main-content h2,
-.main-content h3,
-.main-content h4,
-.main-content h5,
-.main-content h6 {
-    color: $medium-blue;
-}
-
-.main-content h1:first-of-type {
-    margin-top: 0;
 }
