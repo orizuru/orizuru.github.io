@@ -3,6 +3,9 @@
   {% include head.html %}
   <body>
     {% include header.html %}
+    {% if page.url == "/" %}
+      {% include hero.html %}
+    {% endif %}
 
     <section class="main-content">
       {% if page.repo_url %}
