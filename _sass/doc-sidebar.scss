@@ -1,0 +1,23 @@
+section.sidebar {
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: $header-height;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    font-size: 0.8rem;
+    width: $sidebar-width;
+    ul {
+        padding: 0;
+        list-style: none;
+        h3 {
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.2rem 0;
+        }
+        li {
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+    }
+}

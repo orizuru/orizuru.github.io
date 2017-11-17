@@ -1,1 +1,10 @@
-TODO: I'm a sidebar!
+<section class="sidebar">    
+    <ul>
+        {% for group in site.data.documentation.doc-groups %}
+            <h3>{{ group.title }}</h3>
+            {% for doc in group.docs %}
+            <li><a href="{{ doc.url }}" alt="{{ doc.title }}">{{ doc.title }}</a></li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</section>
