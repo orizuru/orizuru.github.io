@@ -1,8 +1,12 @@
 section.sidebar {
+    background-color: $snow;
     border: solid 1px $medium-blue;
     border-radius: 0.2rem;
     padding: 20px;
+    margin: 1rem auto;
     font-size: 0.8rem;
+    min-width: $min-sidebar-width;
+    max-width: 64rem;
     ul {
         padding: 0;
         list-style: none;
@@ -19,5 +23,9 @@ section.sidebar {
                 padding-left: 7px;
             }
         }
+    }
+    @media screen and (min-width: 3 * $min-sidebar-width) {
+        margin: 20px;
+        float: left;
     }
 }
