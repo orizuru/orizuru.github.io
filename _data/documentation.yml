@@ -1,0 +1,18 @@
+doc-groups:
+
+- title: Getting Started
+  docs:
+  - title: Introduction
+    url: /docs/introduction/
+  - title: Getting Started
+    url: /docs/getting-started/
+
+- title: Tools
+  docs:
+  - title: Overview
+    url: /todo/
+
+- title: Contributing
+  docs:
+  - title: How to Contribute
+    url: /todo/
