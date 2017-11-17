@@ -1,12 +1,8 @@
 section.sidebar {
-    background-color: rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: $header-height;
-    bottom: 0;
-    left: 0;
+    border: solid 1px $medium-blue;
+    border-radius: 0.2rem;
     padding: 20px;
     font-size: 0.8rem;
-    width: $sidebar-width;
     ul {
         padding: 0;
         list-style: none;
