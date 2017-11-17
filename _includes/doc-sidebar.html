@@ -4,7 +4,9 @@
         {% for group in site.data.documentation.doc-groups %}
             <h3>{{ group.title }}</h3>
             {% for doc in group.docs %}
-            <li><a href="{{ doc.url }}" alt="{{ doc.title }}">{{ doc.title }}</a></li>
+            <li class="{% if page.url == doc.url %}active{% endif %}">
+                <a href="{{ doc.url }}" alt="{{ doc.title }}">{{ doc.title }}</a>
+            </li>
             {% endfor %}
         {% endfor %}
     </ul>
