@@ -1,13 +1,13 @@
 section.sidebar {
-    background-color: $purple;
-    background-image: url("/assets/images/header-background.jpg");
-    background-size: cover;
+    background-color: $ink;
     padding: 20px;
-    margin: auto;
+    margin: 0;
     font-size: 0.8rem;
     min-width: $min-sidebar-width;
     h1,h2,h3 {
         color: darken($snow, 10%);
+        font-weight: bold;
+        text-transform: uppercase;
     }
     a {
         color: $snow;
@@ -16,8 +16,6 @@ section.sidebar {
         padding: 0;
         list-style: none;
         h3 {
-            font-weight: bold;
-            text-transform: uppercase;
             margin: 1.5rem 0 0.2rem 0;
         }
         li {
@@ -26,9 +24,5 @@ section.sidebar {
                 color: $baby-blue;
             }
         }
-    }
-    @media screen and (min-width: 3 * $min-sidebar-width) {
-        margin: 5px 10px 0 0;
-        float: left;
     }
 }

@@ -7,20 +7,22 @@
       {% include hero.html %}
     {% endif %}
 
-    {% if page.isDoc %}
-      {% include doc-sidebar.html %}
-    {% endif %}
-
-    <section class="main-content">
-      {% if page.repo_url %}
-      <div class="repo-controls">
-          <a target="_blank" href="{{ page.repo_url| default: site.github.repository_url }}" class="btn">View on GitHub</a>
-      </div>
+    <div class="content">
+      {% if page.isDoc %}
+        {% include doc-sidebar.html %}
       {% endif %}
 
-      {{ content }}
+      <section class="main-content">
+        {% if page.repo_url %}
+        <div class="repo-controls">
+            <a target="_blank" href="{{ page.repo_url| default: site.github.repository_url }}" class="btn">View on GitHub</a>
+        </div>
+        {% endif %}
 
-      {% include footer.html %}
-    </section>
+        {{ content }}
+
+        {% include footer.html %}
+      </section>
+    </div>
   </body>
 </html>
