@@ -11,4 +11,13 @@
             margin-top: 0;
         }
     }
+
+    table {
+        tbody tr:nth-of-type(odd) {
+            background-color: $light-gray;
+        }
+        img {
+            height: 1.5rem;
+        }
+    }
 }

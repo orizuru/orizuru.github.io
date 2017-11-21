@@ -5,5 +5,5 @@ doc-groups:
   docs:
   - title: Introduction
     url: /docs/introduction/
-  - title: Getting Started
-    url: /docs/getting-started/
+  - title: Package Overview
+    url: /docs/package-overview/
