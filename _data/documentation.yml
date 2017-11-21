@@ -7,3 +7,8 @@ doc-groups:
     url: /docs/introduction/
   - title: Package Overview
     url: /docs/package-overview/
+
+- title: Tutorial
+  docs:
+  - title: Prerequisites
+    url: /docs/prerequisites/
