@@ -5,63 +5,86 @@
 You will need to install a number of programs and create several accounts before you can start building apps with Orizuru.
 
 ### Node.js
-Check if you already have it by running the following command on the command line.
-This command should return a valid version number, e.g. `v8.9.1`.
+Get it [here](https://nodejs.org/en/).
+
+You can check if it's already installed by running the following command on the command line.
 ```shell
 node -v
 ```
-
-If you don't have it, get it [here](https://nodejs.org/en/).
+This should return a valid version number, e.g.
+> v8.9.1
 
 ### NPM
-Check if you already have it by running the following command on the command line.
-This command should return a valid version number, e.g. `v5.5.1`.
+NPM is bundled with Node.js.
+If it's not installed, then you should install a more recent version of Node.js.
+
+You can check if it's already installed by running the following command on the command line.
 ```shell
 npm -v
 ```
-
-NPM is bundled with Node.js.
-If you don't have it, install a more recent version of Node.js.
+This should return a valid version number, e.g.
+> v5.5.1
 
 ### Heroku CLI
-Check if you already have it by running the following command on the command line.
-This command should return a valid version number, e.g. `heroku-cli/6.14.38-9bfc11a (darwin-x64) node-v9.2.0`.
+Get it [here](https://devcenter.heroku.com/articles/heroku-cli).
+
+You can check if it's already installed by running the following command on the command line.
 ```shell
 heroku -v
 ```
-
-If you don't have it, get it [here](https://devcenter.heroku.com/articles/heroku-cli).
+This should return a valid version number, e.g.
+> heroku-cli/6.14.38-9bfc11a (darwin-x64) node-v9.2.0
 
 ### SFDX CLI
-Check if you already have it by running the following command on the command line.
-This command should return a valid version number, e.g. `sfdx-cli/6.0.16-3780698 (darwin-x64) node-v8.6.0`.
+Get it [here](https://developer.salesforce.com/tools/sfdxcli).
+
+You can check if it's already installed by running the following command on the command line.
 ```shell
 sfdx -v
 ```
+This should return a valid version number, e.g.
+> sfdx-cli/6.0.16-3780698 (darwin-x64) node-v8.6.0
 
-If you don't have it, get it [here](https://developer.salesforce.com/tools/sfdxcli).
+### Git CLI
+Get it [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+
+Check if you already have it by running the following command on the command line.
+```shell
+git version 2.13.6 (Apple Git-96)
+```
+This command should return a valid version number, e.g.
+> git version 2.13.6 (Apple Git-96)
 
 ### Heroku Account
-If you don't have one, sign up for one [here](https://signup.heroku.com/).
+Sign up for one [here](https://signup.heroku.com/).
 
-Check if you are logged into your account in the Heroku CLI by running the following command on the command line.
-This command should list your Heroku applications.
-If you are not logged in, the Heroku CLI will prompt you to enter your username and password. Do so.
+Ensure you are logged into your account in the Heroku CLI by running the following command on the command line.
 ```shell
 heroku apps
 ```
+This command should list your Heroku applications.
+If you are not logged in, the Heroku CLI will prompt you to enter your username and password. Do so.
+> === you@example.com Apps <br>
+> my-orizuru-app (eu)
+
+Note: You should enter your billing details in Heroku.
+Although most of the Orizuru templates use free dynos and free plans for add-ons, installing add-ons will fail if you haven't entered billing details, *even if the add-on is free*.
 
 ### SFDX Environment Hub
 Sign up for a trial [here](https://developer.salesforce.com/promotions/orgs/dx-signup).
 
 ### Orizuru Tools
-Check if you already have it by running the following command on the command line.
-This command should return a valid version number, e.g. `FinancialForceDev Orizuru Version: 1.1.0 Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.`.
-```shell
-orizuru -v
-```
-
-If you don't have it, run the following on the command line:
+Orizuru tools are installed using NPM. Run the following on the command line:
 ```shell
 npm install @financialforcedev/orizuru-tools --global
 ```
+
+You can check if you already have it by running the following command on the command line.
+```shell
+orizuru -v
+```
+This command should return a valid version number, e.g.
+
+> FinancialForceDev Orizuru <br>
+> Version: 1.1.0 <br>
+> Copyright (c) 2017 FinancialForce.com, inc.  All rights reserved.
