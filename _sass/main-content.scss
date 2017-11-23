@@ -18,13 +18,13 @@ body {
             }
         }
     }
+}
 
-    table {
-        tbody tr:nth-of-type(odd) {
-            background-color: $light-gray;
-        }
-        img {
-            height: 1.5rem;
-        }
+table {
+    tbody tr:nth-of-type(odd) {
+        background-color: $light-gray;
+    }
+    img {
+        height: 1.5rem;
     }
 }
