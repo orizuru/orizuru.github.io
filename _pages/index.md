@@ -17,10 +17,10 @@ Heroku is a great choice where processes would be a poor fit to run in Apex - ei
 Orizuru has three main parts:
 
 First, we we have a number of freely available packages which provide features which are frequently needed when building Salesforce-Heroku hybrid projects. These include identity, authentication and process flow. These packages are written in Node.js (available via NPM) and Java.  
-[This is the Orizuru framework](../framework/)
+[This is the Orizuru framework](/docs/package-overview/)
 
-Second, we have built some command line tools that save time when starting new projects. The tools allow you to create your initial project, include the Orizuru framework, and configure security.  
-[These are the Orizuru tools](../tools/)
+Second, we have built some command line tools that save time when starting new projects. The tools allow you to create your initial project, include the Orizuru framework, and configure security.
+[This is a guided tutorial for using Orizuru tools](/docs/building-your-first-app/)
 
 Third, we are providing a sample application which demonstrates the Orizuru framework in a realistic and relatable way.  
 [This is the Orizuru Sample App](../sample/)
