@@ -4,12 +4,19 @@
 # Building Your First App
 
 ## Introduction
-In under 5 minutes, you can build your own Node.js Heroku application connected to the Lightning Platform.
+In under 10 minutes, you can build your own Node.js Heroku application connected to the Lightning Platform.
 Make sure you have completed all of the [prerequisites](/docs/prerequisites/).
 
 Don't worry if you're unfamiliar with Node.js, this tutorial will walk you through the important parts of the code!
 
-## Create the Workspace
+## What Are We Building?
+A simple sample app that spans Lightning Platform and Heroku, but has no UI on either side.
+We're going to make requests using Execute Anonymous in the Developer Console on the Lightning Platform.
+We're going to see the output of handling those requests in the logs on the Heroku App.
+
+And that's all for now! We'll extend this in later tutorials, but first let's make sure we've got the basics covered.
+
+## Create Your Workspace
 1. Create an empty directory - in this example we have created the directory `orizuru-tutorial`.
 1. Open the command line and navigate to the new empty directory.<br>
     From here on out, whenever you're asked to run a command, ensure you run it from the command line in this directory.
@@ -32,7 +39,7 @@ Don't worry if you're unfamiliar with Node.js, this tutorial will walk you throu
             > ? author: <br>
             > ? license: *(ISC)*
 
-Congratulations, you've built your Orizuru first app!
+Congratulations, you've built your first Orizuru app!
 
 You'll notice that your empty directory isn't so empty now - let's take a closer look at the newly generated files and directories.
 
@@ -56,9 +63,9 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
         ```shell
         git init
         git add .
-        git commit -am "Initial commit"
+        git commit -m "Initial commit"
         ```
-    * This should log out something like the following
+    * This should log out something like the following:
         > Initialized empty Git repository in /path/to/orizuru-tutorial/.git/ <br>
         > [master (root-commit) 4514a8d] Initial commit 41 files changed, 2036 insertions(+) <br>
         > create mode 100644 .gitignore <br>
@@ -121,8 +128,116 @@ Sorry, but Salesforce don't allow us to do this programmatically (at least, not 
 1. In the **Permission Sets** section, press the **Manage Permission Sets** button.
 1. Tick the checkbox next to the OrizuruAdmin permission set, which is already assigned to the current user, then press Save.
 
-## Try it out
-TODO
+## Create Your First Job
+Ok, let's recap.
+* You've got a scratch org with a named credential, Connected App and some Apex classes.
+* You've got a Heroku app with:
+    * a web dyno, with an express webserver up and ready to receive requests and publish them to a job queue.
+    * a worker dyno, ready to handle jobs in the job queue.
 
-## Make it your own
-TODO
+This is a very valuable asynchronous framework, but it doesn't actually do anything yet!
+We need to define the types of work we want to perform, and how to perform it.
+
+### Create the Avro Schema
+First, we need to make sure that the Lightning Platform and Heroku have a consistent model to describe jobs.
+We'll use [Apache Avro](https://avro.apache.org/docs/current/), which allows us to declare the model as JSON in an Avro schema.
+Our Node.js app can read the schema dynamically while the app is running.
+However, we will need to perform code-generation for Apex which is statically typed.
+
+1. Create the Avro schema.
+    * In `src/node/lib/schemas/api` create a file `fullname.avsc`.
+    * Copy/paste the code below into `fullname.avsc`.
+        ```json
+        {
+            "type": "record",
+            "namespace": "com.example",
+            "name": "FullName",
+            "fields": [
+                { "name": "first", "type": "string" },
+                { "name": "last", "type": "string" }
+            ]
+        } 
+        ```
+1. Now generate the Apex transport classes from the Avro schema.
+    Run the command:
+    ```shell
+    sfdx force:apex:class:create -n OrizuruTransport -d src/apex/app/main/default/classes
+    orizuru setup generate-apex-transport src/node/lib/schemas/api src/apex/app/main/default/classes
+    ```
+    * This should log out something like the following:
+    > target dir = /path/to/orizuru-tutorial/src/apex/app/main/default/classes<br>
+    > &nbsp;&nbsp;&nbsp;&nbsp;create OrizuruTransport.cls<br>
+    > &nbsp;&nbsp;&nbsp;&nbsp;create OrizuruTransport.cls-meta.xml<br><br>
+    > Generating apex transport classes /path/to/orizuru-tutorial/src/node/lib/schemas/fullname.avsc<br><br>
+    > Generated apex transport classes (OrizuruTransport.cls) in: /path/to/orizuru-tutorial/src/apex/app/main/default/classes
+
+### Create the Node Handler
+1. In `src/node/lib/handlers/api` create a file `fullname.js`.
+    * **Note:** Orizuru uses filenames to match each Avro schema to the corresponding handler. The filenames MUST match in order for the handler to work correctly.
+    * Copy/paste the code below into `fullname.js`.
+        ````javascript
+        'use strict';
+
+        const
+            debug = require('debug-plus')('fullname-handler');
+
+        module.exports = ({ message, context }) => {
+            debug.log('Handled event for schema \'api/fullname\'...');
+            debug.log('Context:');
+            debug.log(JSON.stringify(context));
+            debug.log('Message:');
+            debug.log(JSON.stringify(message));
+        };
+
+        ````
+
+## Deploy the updated code
+1. First, let's increase the debug log level in the Heroku app.<br>
+    Run the following command to set the DEBUG config variable, but replace `evening-badlands-29385` with the name of your own Heroku app.
+    ```shell
+    heroku config:set "DEBUG=*" --app evening-badlands-29385
+    ```
+    * This will set the config variable and restart all dynos
+        > Setting DEBUG and restarting evening-badlands-29385... done, v9<br>
+        > DEBUG: *
+1. Next, commit all of the new files to git and deploy the code again.
+    ```shell
+    git add .
+    git commit -m "Add Fullname job"
+    orizuru deploy
+    ```
+    * Again, you'll be asked questions and you can just press Enter to accept the default suggestion.
+        * The tools will remember the Heroku app and scratch org you created earlier, and will highlight them by default when asking you which app you want to deploy to.
+        * You will be prompted to recreate the Connected App and the Named Credential, just press Enter to accept the default values.<br>
+            This will overwrite the ones deployed before, but will have no effect.
+
+## Try It Out!
+1. The `orizuru deploy` should have opened a web browser connected to your scratch org.
+    * You can open one at any time using the command
+    ```shell
+    sfdx force:org:open
+    ```
+1. Open your app from the [Heroku Dashboard](https://dashboard.heroku.com).
+    1. In the **More** menu at the top right, click on **View Logs**.
+1. In the scratch org, in the **Setup** menu at the top right (i.e. the gear icon), click on Developer Console.
+1. In the Developer Console, in the **Debug** menu at the top, click on **Open Execute Anonymous Window**.
+1. Copy/paste the code below into `fullname.avsc`.
+    ```java
+    String endpoint = 'callout:Orizuru/api/fullname';
+    //Feel free to change this to your own name!
+    OrizuruTransport transport = new OrizuruTransport.com_example_FullName('Ori', 'Zuru');
+    String sessionId = UserInfo.getSessionId();
+    HerokuConnector.newInstance().post(endpoint, transport, sessionId);
+    ```
+1. Click on the Execute button.
+1. Back in the Heroku logs, you will see logging showing:
+    * The web server receiving the initial request
+    * The worker picking the job up asynchronously
+    * The worker logging out your name!
+    > 2017-11-23T13:07:52.698250+00:00 heroku[router]: at=info method=POST path="/api/fullname" host=evening-badlands-29385.herokuapp.com request_id=6ae3e116-d2d6-4507-98d2-8a615606f269 fwd="85.222.130.8" dyno=web.1 connect=0ms service=1245ms status=200 bytes=445 protocol=https <br><br>
+    > 2017-11-23T13:07:52.710244+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT boilerplate:worker:log Handler received com.example.FullName event. <br><br>
+    > 2017-11-23T13:07:52.711212+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log Handled event for schema 'api/fullname'... <br><br>
+    > 2017-11-23T13:07:52.711940+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log {"first":"Ori","last":"Zuru"}
+
+For the third time, congratulations!
+You've built, deployed and used your Orizuru first app!
