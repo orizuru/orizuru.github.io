@@ -1,0 +1,12 @@
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+    color: $medium-blue;
+}
+
+.main-content h1:first-of-type {
+    margin-top: 0;
+}
