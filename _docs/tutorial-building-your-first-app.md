@@ -7,7 +7,7 @@
 In under 10 minutes, you can build your own Node.js Heroku application connected to the Lightning Platform.
 Make sure you have completed all of the [prerequisites](/docs/prerequisites/).
 
-Don't worry if you're unfamiliar with Node.js, this tutorial will walk you through the important parts of the code!
+Don't worry if you're unfamiliar with Node.js, this tutorial won't take any deep-dives into framework. We'll provide code snippets as and when you need them!
 
 ## What Are We Building?
 A simple sample app that spans Lightning Platform and Heroku, but has no UI on either side.
@@ -221,7 +221,7 @@ However, we will need to perform code-generation for Apex which is statically ty
     1. In the **More** menu at the top right, click on **View Logs**.
 1. In the scratch org, in the **Setup** menu at the top right (i.e. the gear icon), click on Developer Console.
 1. In the Developer Console, in the **Debug** menu at the top, click on **Open Execute Anonymous Window**.
-1. Copy/paste the code below into `fullname.avsc`.
+1. Copy/paste the code below into the Execute Anonymous Window.
     ```java
     String endpoint = 'callout:Orizuru/api/fullname';
     //Feel free to change this to your own name!
@@ -240,4 +240,4 @@ However, we will need to perform code-generation for Apex which is statically ty
     > 2017-11-23T13:07:52.711940+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log {"first":"Ori","last":"Zuru"}
 
 For the third time, congratulations!
-You've built, deployed and used your Orizuru first app!
+You've built, deployed and used your first Orizuru app!
