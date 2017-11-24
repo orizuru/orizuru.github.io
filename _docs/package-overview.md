@@ -83,7 +83,7 @@
                     <img alt="View in NPM" src="{{ site.baseurl }}/assets/images/npm-logo.svg">
                 </a>
             </td>
-            <td>Transport layer that uses RabbitMQ as the message broker</td>
+            <td>Transport layer that uses AMQP as the message broker</td>
         </tr>
         <tr>
             <td>Orizuru Transport RabbitMQ</td>
@@ -94,7 +94,7 @@
                 </a>
             </td>
             <td/>
-            <td>Transport layer that uses RabbitMQ as the message broker</td>
+            <td>Transport layer that uses AMQP as the message broker</td>
         </tr>
         <tr>
             <td>Orizuru Transport Redis</td>
