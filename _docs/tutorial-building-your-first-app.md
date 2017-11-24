@@ -118,6 +118,7 @@ But before you get too carried away, you need to some manual post-install steps.
 Sorry, but Salesforce don't allow us to do this programmatically (at least, not yet)!
 
 ### Manual Post-install Steps
+We want to let admins in the subscriber org control which users have access to the connected app, rather than making each user go through the OAuth flow.
 1. In the scratch org's Setup, type 'Manage Connected Apps' into the Quick Find search box.
 1. Click on Manage Connected Apps in the sidebar. Here you'll see the connected app we prepared earlier.
 1. Click on the Edit button next to the Orizuru connected app.
@@ -173,7 +174,7 @@ However, we will need to perform code-generation for Apex which is statically ty
 
 ### Create the Node Handler
 1. In `src/node/lib/handlers/api` create a file `fullname.js`.
-    * **Note:** Orizuru uses filenames to match each Avro schema to the corresponding handler. The filenames MUST match in order for the handler to work correctly.
+    * **Note:** This template app requires filenames to match each Avro schema to the corresponding handler. The filenames MUST match in order for the handler to work correctly.
     * Copy/paste the code below into `fullname.js`.
         ````javascript
         'use strict';
