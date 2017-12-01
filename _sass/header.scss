@@ -1,32 +1,37 @@
 .navbar {
     background-color: $purple;
     line-height: 3rem;
+    font-size: 1.1rem;
+    color: $snow;
     background-image: url("/assets/images/header-background.jpg");
     background-size: cover;
     display: flex;
     align-items: center;
     flex-direction: row;
+    * {
+        padding: 0 0.5rem;
+    }
+    span {
+        font-weight: bold;
+        padding-left: 0;
+        @media screen and (max-width: 42rem) {
+            display: none;
+        }
+    }
     img {
-        margin-left: 1em;
-        margin-right: 1em;
         height: 2em;
         vertical-align: middle;
+    }
+    a {
+        color: $snow;
+        text-decoration: none;
+        &:hover,&.active {
+            color: $baby-blue;
+        }
     }
     nav {
         justify-content: flex-end;
         flex-grow: 1;
         overflow: hidden;
-        a {
-            font-size: 1.1rem;
-            line-height: 1.1rem;
-            padding: 0.3rem 0.5rem;
-            border-radius: 0.3rem;
-            color: $snow;
-            text-decoration: none;
-            margin: 10px;
-            &:hover,&.active {
-                color: $baby-blue;
-            }
-        }
     }
 }
