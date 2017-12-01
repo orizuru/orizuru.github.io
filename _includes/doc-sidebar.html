@@ -1,13 +1,18 @@
-<section class="sidebar">    
-    <h2>{{ site.data.documentation.doc-title }}</h2>
-    <ul>
-        {% for group in site.data.documentation.doc-groups %}
-            <h3>{{ group.title }}</h3>
-            {% for doc in group.docs %}
-            <li class="{% if page.url == doc.url %}active{% endif %}">
-                <a href="{{ doc.url }}" alt="{{ doc.title }}">{{ doc.title }}</a>
-            </li>
+<section class="navbar column">    
+    <nav>
+        <ul>
+            {% for group in site.data.documentation.doc-groups %}
+                <li>
+                    <h3>{{ group.title }}</h3>
+                    <ul>
+                        {% for doc in group.docs %}
+                            <li>
+                                <a class="{% if page.url == doc.url %}active{% endif %}" href="{{ doc.url }}" alt="{{ doc.title }}">{{ doc.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
             {% endfor %}
-        {% endfor %}
-    </ul>
+        </ul>
+    </nav>
 </section>

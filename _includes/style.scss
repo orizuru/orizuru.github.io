@@ -1,8 +1,7 @@
 @import "{{ site.theme }}";
 
 @import "vars";
-@import "doc-sidebar";
-@import "header";
+@import "navbar";
 @import "hero";
 @import "main-content";
 @import "repo-controls";

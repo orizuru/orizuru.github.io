@@ -1,0 +1,54 @@
+.navbar {
+    background-color: $dark-blue;
+    display: flex;
+    font-size: 1.1rem;
+    color: $snow;
+    .logo {
+        font-weight: bold;
+        padding-left: 0;
+        @media screen and (max-width: 42rem) {
+            display: none;
+        }
+    }
+    * {
+        padding: 0 0.5rem;
+    }
+    a {
+        color: $snow;
+        text-decoration: none;
+        &:hover,&.active {
+            color: $steel;
+        }
+        &.active {
+            pointer-events: none;
+        }
+    }
+    img {
+        height: 2em;
+        vertical-align: middle;
+    }
+    nav {
+        justify-content: flex-end;
+        flex-grow: 1;
+    }
+    ul li {
+        text-indent: -1rem;
+        padding: 0 1rem;
+        list-style: none;
+    }
+    &.row {
+        align-items: center;
+        flex-direction: row;
+        line-height: 3rem;
+    }
+    &.column {
+        h3 {
+            margin-bottom: 0;
+        }
+        align-items: flex-start;
+        background: lighten($dark-blue, 5%);
+        flex-basis: 20%;
+        flex-direction: column;
+        font-size: 0.9rem;
+    }
+}
