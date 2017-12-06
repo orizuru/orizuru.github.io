@@ -1,19 +1,10 @@
 .page-header {
-    background-color: $medium-blue;
-    background-image: linear-gradient(120deg, $ink, darken($black, 20%));
+    background-color: $dark-blue;
+    background-image: none;
     -webkit-font-smoothing: antialiased;
 }
 
-.top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0 3rem 0;
-    margin-bottom: 1rem;
-}
-
-.logo {
+.top-bar .logo {
     height: auto;
     @media screen and (min-width: 64em) {
         width: 275px;
