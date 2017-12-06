@@ -5,14 +5,13 @@ html {
         display: flex;
         flex-direction: column;    
         .content {
-            flex-grow: 1;
+            flex: 1;
             @media screen and (min-width: 3 * $min-navbar-column-width) {
                 display: flex;
                 flex-direction: row;
-                align-items: stretch;
             }
             section.main-content {
-                flex-grow: 1;
+                flex: 1;
                 h1, h2, h3, h4, h5, h6 {
                     color: $medium-blue;
                 }
