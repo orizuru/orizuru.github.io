@@ -20,7 +20,7 @@ First, we we have a number of freely available packages which provide features w
 [This is the Orizuru framework](/docs/package-overview/)
 
 Second, we have built some command line tools that save time when starting new projects. The tools allow you to create your initial project, include the Orizuru framework, and configure security.
-[This is a guided tutorial for using Orizuru tools](/docs/building-your-first-app/)
+[This is a guided tutorial for using Orizuru tools](/docs/tutorial-building-your-first-app/)
 
 Third, we are providing a sample application which demonstrates the Orizuru framework in a realistic and relatable way.  
 [This is the Orizuru Sample App](../sample/)
