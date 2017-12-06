@@ -50,7 +50,7 @@ Get it [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 Check if you already have it by running the following command on the command line.
 ```shell
-git version 2.13.6 (Apple Git-96)
+git --version
 ```
 This command should return a valid version number, e.g.
 > git version 2.13.6 (Apple Git-96)
