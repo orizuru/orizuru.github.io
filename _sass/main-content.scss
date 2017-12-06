@@ -1,20 +1,24 @@
-body {
-    display: flex;
-    flex-direction: column;    
-    .content {
-        flex: 1;        
-        @media screen and (min-width: 3 * $min-sidebar-width) {
-            display: flex;
-            flex-direction: row;
-            align-items: stretch;
-        }
-        section.main-content {
-            flex: 1;
-            h1, h2, h3, h4, h5, h6 {
-                color: $medium-blue;
+html {
+    height: 100%;
+    body {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;    
+        .content {
+            flex-grow: 1;
+            @media screen and (min-width: 3 * $min-navbar-column-width) {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
             }
-            h1:first-of-type {
-                margin-top: 0;
+            section.main-content {
+                flex-grow: 1;
+                h1, h2, h3, h4, h5, h6 {
+                    color: $medium-blue;
+                }
+                h1:first-of-type {
+                    margin-top: 0;
+                }
             }
         }
     }
