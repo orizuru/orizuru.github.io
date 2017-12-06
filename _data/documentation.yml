@@ -5,5 +5,12 @@ doc-groups:
   docs:
   - title: Introduction
     url: /docs/introduction/
-  - title: Getting Started
-    url: /docs/getting-started/
+  - title: Package Overview
+    url: /docs/package-overview/
+
+- title: Tutorial
+  docs:
+  - title: Prerequisites
+    url: /docs/prerequisites/
+  - title: Building Your First App
+    url: /docs/tutorial-building-your-first-app/
