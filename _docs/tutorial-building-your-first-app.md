@@ -20,6 +20,10 @@ If your Orizuru version is below 1.2.0, then update to the latest version using 
 npm update @financialforcedev/orizuru-tools --global
 ```
 
+If you have any issues during this tutorial, check out the [troubleshooting](/docs/troubleshooting/) page.
+If you're still having problems, [check if similar issues have already been raised in GitHub](https://github.com/financialforcedev/orizuru-tools/issues).
+If you encounter an issue that hasn't been raised before, then go right ahead and create a New Issue.
+
 ## What Are We Building?
 A simple sample app that spans Lightning Platform and Heroku, but has no UI on either side.
 We're going to make requests using Execute Anonymous in the Developer Console on the Lightning Platform.
