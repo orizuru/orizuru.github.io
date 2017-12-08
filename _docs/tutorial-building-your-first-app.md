@@ -9,13 +9,13 @@ Make sure you have completed all of the [prerequisites](/docs/prerequisites/).
 
 Don't worry if you're unfamiliar with Node.js, this tutorial won't take any deep-dives into framework. We'll provide code snippets as and when you need them!
 
-This tutorial relates to orizuru-tools version 1.2.0 or later.
+This tutorial relates to orizuru-tools version 2.0.0 or later.
 Check your current orizuru tools version by running the command below on the command line.
 ```shell
 orizuru -v
 ```
 
-If your Orizuru version is below 1.2.0, then update to the latest version using the command:
+If your Orizuru version is below 2.0.0, then update to the latest version using the command:
 ```shell
 npm update @financialforcedev/orizuru-tools --global
 ```
