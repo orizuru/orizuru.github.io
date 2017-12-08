@@ -9,6 +9,17 @@ Make sure you have completed all of the [prerequisites](/docs/prerequisites/).
 
 Don't worry if you're unfamiliar with Node.js, this tutorial won't take any deep-dives into framework. We'll provide code snippets as and when you need them!
 
+This tutorial relates to orizuru-tools version 1.2.0 or later.
+Check your current orizuru tools version by running the command below on the command line.
+```shell
+orizuru -v
+```
+
+If your Orizuru version is below 1.2.0, then update to the latest version using the command:
+```shell
+npm update @financialforcedev/orizuru-tools --global
+```
+
 ## What Are We Building?
 A simple sample app that spans Lightning Platform and Heroku, but has no UI on either side.
 We're going to make requests using Execute Anonymous in the Developer Console on the Lightning Platform.
@@ -26,7 +37,7 @@ And that's all for now! We'll extend this in later tutorials, but first let's ma
     ```shell
     orizuru setup init
     ```
-1. You will be asked to choose a template. Choose the `web-worker-template`.
+1. You will be asked to choose a template. Choose `web-node-worker`.
 1. All Node.js apps need a [package.json](https://docs.npmjs.com/files/package.json), which describes the shape of the application.
     * The tools will create one for you, by asking you some details about your project.
     * It will guess appropriate answers for each question, so just press Enter on each question to accept the default suggestions.
@@ -101,8 +112,7 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
         > Create Connected App<br>
         >  You are about to be asked to enter information that will be incorporated into your connected app. <br><br>
         > ? Connected App Name *Orizuru* <br>
-        > ? Connected App Email *test@test.com* <br><br>
-        > Update Heroku config variables
+        > ? Connected App Email *test@test.com*
     * The new Connected App will be pushed to your scratch org.
     * The corresponding `JWT_SIGNING_KEY` will be pushed up to your Heroku app as a config variable.
 1. The sample app uses a Named Credential to specify the URL of the Heroku app.
@@ -136,8 +146,8 @@ Ok, let's recap.
     * a web dyno, with an express webserver up and ready to receive requests and publish them to a job queue.
     * a worker dyno, ready to handle jobs in the job queue.
 
-This is a very valuable asynchronous framework, but it doesn't actually do anything yet!
-We need to define the types of work we want to perform, and how to perform it.
+This is a just a skeleton of an app; it doesn't actually do anything yet!
+We need to define the types of work we want to perform, and how to perform them.
 
 ### Create the Avro Schema
 First, we need to make sure that the Lightning Platform and Heroku have a consistent model to describe jobs.
@@ -145,38 +155,37 @@ We'll use [Apache Avro](https://avro.apache.org/docs/current/), which allows us 
 Our Node.js app can read the schema dynamically while the app is running.
 However, we will need to perform code-generation for Apex which is statically typed.
 
-1. Create the Avro schema.
-    * In `src/node/lib/schemas/api` create a file `fullname.avsc`.
-    * Copy/paste the code below into `fullname.avsc`.
+1. Create the Avro schemas.
+    * In `src/node/lib/schema/` create a file `fullname_incoming.avsc`.
+    * In `src/node/lib/schema/api/` create a file `fullname.avsc`.
+    * In both files, paste in this schema definition:
         ```json
-        {
-            "type": "record",
-            "namespace": "com.example",
-            "name": "FullName",
-            "fields": [
-                { "name": "first", "type": "string" },
-                { "name": "last", "type": "string" }
-            ]
-        } 
-        ```
+            {
+                "type": "record",
+                "namespace": "com.example",
+                "name": "FullName",
+                "fields": [
+                    { "name": "first", "type": "string" },
+                    { "name": "last", "type": "string" }
+                ]
+            } 
+            ```
+    * You can delete the `add-all-schemas-here.md` file, which is a placeholder for the schemas and simply contains the sample schema definition above.
+        
 1. Now generate the Apex transport classes from the Avro schema.
     Run the command:
     ```shell
-    sfdx force:apex:class:create -n OrizuruTransport -d src/apex/app/main/default/classes
-    orizuru setup generate-apex-transport src/node/lib/schemas/api src/apex/app/main/default/classes
+    orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/app/main/default/classes
     ```
     * This should log out something like the following:
-    > target dir = /path/to/orizuru-tutorial/src/apex/app/main/default/classes<br>
-    > &nbsp;&nbsp;&nbsp;&nbsp;create OrizuruTransport.cls<br>
-    > &nbsp;&nbsp;&nbsp;&nbsp;create OrizuruTransport.cls-meta.xml<br><br>
     > Generating apex transport classes /path/to/orizuru-tutorial/src/node/lib/schemas/fullname.avsc<br><br>
     > Generated apex transport classes (OrizuruTransport.cls) in: /path/to/orizuru-tutorial/src/apex/app/main/default/classes
 
 ### Create the Node Handler
-1. In `src/node/lib/handlers/api` create a file `fullname.js`.
+1. In `src/node/lib/handler/api` create a file `fullname.js`.
     * **Note:** This template app requires filenames to match each Avro schema to the corresponding handler. The filenames MUST match in order for the handler to work correctly.
     * Copy/paste the code below into `fullname.js`.
-        ````javascript
+        ```javascript
         'use strict';
 
         const
@@ -190,7 +199,8 @@ However, we will need to perform code-generation for Apex which is statically ty
             debug.log(JSON.stringify(message));
         };
 
-        ````
+        ```
+    * You can delete the `add-all-handlers-here.md` file, which is a placeholder for the handlers and simply contains the sample code above.
 
 ## Deploy the updated code
 1. First, let's increase the debug log level in the Heroku app.<br>
