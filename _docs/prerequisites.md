@@ -4,6 +4,16 @@
 # Prerequisites
 You will need to install a number of programs and create several accounts before you can start building apps with Orizuru.
 
+#### Versions
+Orizuru Tools has been tested with the following versions of prerequisites. Earlier versions *may* work, but we have not verified this. If possible, you should upgrade to the latest Generally Available versions.
+
+|Program|Minimum version|
+|-------|---------------|
+|Node.js|8.9.1|
+|NPM|5.5.1|
+|Heroku CLI|9.2.0|
+|SFDX CLI|8.6.0|
+
 ### Node.js
 Get it [here](https://nodejs.org/en/).
 
