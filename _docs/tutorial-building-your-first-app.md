@@ -128,6 +128,8 @@ But before you get too carried away, you need to some manual post-install steps.
 Sorry, but Salesforce don't allow us to do this programmatically (at least, not yet)!
 
 ### Manual Post-install Steps
+
+#### Lightning Platform Post-install Steps
 We want to let admins in the subscriber org control which users have access to the connected app, rather than making each user go through the OAuth flow.
 1. In the scratch org's Setup, type 'Manage Connected Apps' into the Quick Find search box.
 1. Click on Manage Connected Apps in the sidebar. Here you'll see the connected app we prepared earlier.
@@ -138,6 +140,16 @@ We want to let admins in the subscriber org control which users have access to t
 1. Back on the Manage Connected App page, click on the name of the Connected App.
 1. In the **Permission Sets** section, press the **Manage Permission Sets** button.
 1. Tick the checkbox next to the OrizuruAdmin permission set, which is already assigned to the current user, then press Save.
+
+#### Heroku Post-install Steps
+1. If you created your Heroku app in an Enterprise Team, you may skip this step.
+1. Otherwise, you will need to activate your free worker dyno, which is switched off by default.
+1. Run the following command to switch on the worker dyno, but replace `evening-badlands-29385` with the name of your own Heroku app.
+    ```shell
+    heroku ps:scale worker=1 --app evening-badlands-29385
+    ```
+    * This should log out the following
+        > Scaling dynos... done, now running worker at 1:Free
 
 ## Create Your First Job
 Ok, let's recap.
