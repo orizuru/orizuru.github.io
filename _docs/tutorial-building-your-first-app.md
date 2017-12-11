@@ -176,16 +176,16 @@ However, we will need to perform code-generation for Apex which is statically ty
     * In `src/node/lib/schema/api/` create a file `fullname.avsc`.
     * In both files, paste in this schema definition:
         ```json
-            {
-                "type": "record",
-                "namespace": "com.example",
-                "name": "FullName",
-                "fields": [
-                    { "name": "first", "type": "string" },
-                    { "name": "last", "type": "string" }
-                ]
-            } 
-            ```
+        {
+            "type": "record",
+            "namespace": "com.example",
+            "name": "FullName",
+            "fields": [
+                { "name": "first", "type": "string" },
+                { "name": "last", "type": "string" }
+            ]
+        } 
+        ```
     * You can delete the `add-all-schemas-here.md` file, which is a placeholder for the schemas and simply contains the sample schema definition above.
         
 1. Now generate the Apex transport classes from the Avro schema.
