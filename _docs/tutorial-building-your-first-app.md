@@ -265,6 +265,8 @@ However, we will need to perform code-generation for Apex which is statically ty
     > 2017-11-23T13:07:52.710244+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT boilerplate:worker:log Handler received com.example.FullName event. <br><br>
     > 2017-11-23T13:07:52.711212+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log Handled event for schema 'api/fullname'... <br><br>
     > 2017-11-23T13:07:52.711940+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log {"first":"Ori","last":"Zuru"}
+    1. Note: You may receive a 401 (Unauthorized) error while the Connected App is replicated across Salesforce instances. Try again in 5 minutes if you see logging like this:
+        > 2017-11-23T13:07:52.698250+00:00 heroku[router]: at=info method=POST path="/api/fullname" host=evening-badlands-29385.herokuapp.com request_id=6ae3e116-d2d6-4507-98d2-8a615606f269 fwd="85.222.130.8" dyno=web.1 connect=0ms service=620ms status=401 bytes=415 protocol=https
 
 For the third time, congratulations!
 You've built, deployed and used your first Orizuru app!
