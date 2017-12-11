@@ -11,8 +11,8 @@ Orizuru Tools has been tested with the following versions of prerequisites. Earl
 |-------|---------------|
 |Node.js|8.9.1|
 |NPM|5.5.1|
-|Heroku CLI|9.2.0|
-|SFDX CLI|8.6.0|
+|Heroku CLI|6.14.38|
+|SFDX CLI|6.0.16|
 
 ### Node.js
 Get it [here](https://nodejs.org/en/).
