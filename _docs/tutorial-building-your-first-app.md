@@ -9,13 +9,13 @@ Make sure you have completed all of the [prerequisites](/docs/prerequisites/).
 
 Don't worry if you're unfamiliar with Node.js, this tutorial won't take any deep-dives into framework. We'll provide code snippets as and when you need them!
 
-This tutorial relates to orizuru-tools version 2.0.0 or later.
+This tutorial relates to orizuru-tools version 2.0.2 or later.
 Check your current orizuru tools version by running the command below on the command line.
 ```shell
 orizuru -v
 ```
 
-If your Orizuru version is below 2.0.0, then update to the latest version using the command:
+If your Orizuru version is below 2.0.2, then update to the latest version using the command:
 ```shell
 npm update @financialforcedev/orizuru-tools --global
 ```
@@ -186,7 +186,7 @@ However, we will need to perform code-generation for Apex which is statically ty
             ]
         } 
         ```
-    * You can delete the `add-all-schemas-here.md` file, which is a placeholder for the schemas and simply contains the sample schema definition above.
+    * You can delete the `add-all-avro-schemas-here.md` file, which is a placeholder for the schemas and simply contains the sample schema definition above.
         
 1. Now generate the Apex transport classes from the Avro schema.
     Run the command:
@@ -198,7 +198,7 @@ However, we will need to perform code-generation for Apex which is statically ty
     > Generated apex transport classes (OrizuruTransport.cls) in: /path/to/orizuru-tutorial/src/apex/app/main/default/classes
 
 ### Create the Node Handler
-1. In `src/node/lib/handler/api` create a file `fullname.js`.
+1. In `src/node/lib/handler` create a file `fullname.js`.
     * **Note:** This template app requires filenames to match each Avro schema to the corresponding handler. The filenames MUST match in order for the handler to work correctly.
     * Copy/paste the code below into `fullname.js`.
         ```javascript
