@@ -80,7 +80,7 @@ If you are not logged in, the Heroku CLI will prompt you to enter your username 
 Note: You should enter your billing details in Heroku.
 Although most of the Orizuru templates use free dynos and free plans for add-ons, installing add-ons will fail if you haven't entered billing details, *even if the add-on is free*.
 
-### SFDX Environment Hub
+### SFDX Developer Hub
 Sign up for a trial [here](https://developer.salesforce.com/promotions/orgs/dx-signup).
 
 ### Orizuru Tools

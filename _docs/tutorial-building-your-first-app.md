@@ -9,13 +9,13 @@ Make sure you have completed all of the [prerequisites](/docs/prerequisites/).
 
 Don't worry if you're unfamiliar with Node.js, this tutorial won't take any deep-dives into framework. We'll provide code snippets as and when you need them!
 
-This tutorial relates to orizuru-tools version 2.0.2 or later.
+This tutorial relates to orizuru-tools version 2.0.3 or later.
 Check your current orizuru tools version by running the command below on the command line.
 ```shell
 orizuru -v
 ```
 
-If your Orizuru version is below 2.0.2, then update to the latest version using the command:
+If your Orizuru version is below 2.0.3, then update to the latest version using the command:
 ```shell
 npm update @financialforcedev/orizuru-tools --global
 ```
@@ -37,7 +37,7 @@ And that's all for now! We'll extend this in later tutorials, but first let's ma
     From here on out, whenever you're asked to run a command, ensure you run it from the command line in this directory.
 
 ## Use a Template
-1. Run the command:
+1. From the command line in the project root, run the command:
     ```shell
     orizuru setup init
     ```
@@ -74,7 +74,7 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
 ## Deploy Your App
 1. You deploy apps to Heroku using git.
     So let's turn the current workspace into a git repository.
-    * Run the following commands:
+    * From the command line in the project root, run the following commands:
         ```shell
         git init
         git add .
@@ -86,7 +86,7 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
         > create mode 100644 .gitignore <br>
         > create mode 100644 .jsbeautifyrc <br>
         > ...
-1. Now let's deploy to Heroku and the Lightning Platform. Run the following command:
+1. Now let's deploy to Heroku and the Lightning Platform. From the command line in the project root, run the following command:
     ```shell
     orizuru deploy
     ```
@@ -94,6 +94,7 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
     If you are part of any Heroku enterprise teams, you can create an app in that team.<br>
     For this tutorial, choose `<<Create new Heroku App>>`.
 1. Heroku will create a new app, with a random name, in this case `evening-badlands-29385`.<br>
+    Make a note of your Heroku app name - you'll need it later on!<br>
     The tools will push the code up to Heroku. Heroku will detect that it's a Node.js project, install the packages it depends on and start running the app.
 1. Great! You've got your Heroku app up, and running. If you want to, you can look at it in your [Heroku Dashboard](https://dashboard.heroku.com).
 1. Next, you'll deploy to the Lightning Platform.<br>
@@ -106,7 +107,7 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
         > ? Organization Name (eg, company) *FinancialForce* <br>
         > ? Organizational Unit Name (eg, section) <br>
         > ? Common Name (e.g. server FQDN or YOUR name) *test@test.com*
-1. The tools will open a web browser on the Salesforce login page. Login to your Environment Hub. Once you've successfully logged in, you can close the browser.
+1. The tools will open a web browser on the Salesforce login page. Login to your Developer Hub. Once you've successfully logged in, you can close the browser.
 1. You will be asked which scratch org to deploy to. You can either create a new one, or choose an existing one.
     For this tutorial, choose `<<Create new SFDX scratch org>>`.
     This will deploy the source code, and assign permission sets to the current user.
@@ -148,7 +149,7 @@ We want to let admins in the subscriber org control which users have access to t
 #### Heroku Post-install Steps
 1. If you created your Heroku app in an Enterprise Team, you may skip this step.
 1. Otherwise, you will need to activate your free worker dyno, which is switched off by default.
-1. Run the following command to switch on the worker dyno, but replace `evening-badlands-29385` with the name of your own Heroku app.
+1. From the command line in the project root, run the following command to switch on the worker dyno, but replace `evening-badlands-29385` with the name of your own Heroku app.
     ```shell
     heroku ps:scale worker=1 --app evening-badlands-29385
     ```
@@ -172,8 +173,9 @@ Our Node.js app can read the schema dynamically while the app is running.
 However, we will need to perform code-generation for Apex which is statically typed.
 
 1. Create the Avro schemas.
-    * In `src/node/lib/schema/` create a file `fullname_incoming.avsc`.
-    * In `src/node/lib/schema/api/` create a file `fullname.avsc`.
+    * In `src/node/lib/schema/` create a directory: `api`.
+    * In `src/node/lib/schema/` create a file: `fullname_incoming.avsc`.
+    * In `src/node/lib/schema/api/` create a file: `fullname.avsc`.
     * In both files, paste in this schema definition:
         ```json
         {
@@ -189,7 +191,7 @@ However, we will need to perform code-generation for Apex which is statically ty
     * You can delete the `add-all-avro-schemas-here.md` file, which is a placeholder for the schemas and simply contains the sample schema definition above.
         
 1. Now generate the Apex transport classes from the Avro schema.
-    Run the command:
+    From the command line in the project root, run the command:
     ```shell
     orizuru setup generate-apex-transport src/node/lib/schema/api src/apex/app/main/default/classes
     ```
@@ -198,7 +200,7 @@ However, we will need to perform code-generation for Apex which is statically ty
     > Generated apex transport classes (OrizuruTransport.cls) in: /path/to/orizuru-tutorial/src/apex/app/main/default/classes
 
 ### Create the Node Handler
-1. In `src/node/lib/handler` create a file `fullname.js`.
+1. In `src/node/lib/handler` create a file: `fullname.js`.
     * **Note:** This template app requires filenames to match each Avro schema to the corresponding handler. The filenames MUST match in order for the handler to work correctly.
     * Copy/paste the code below into `fullname.js`.
         ```javascript
@@ -220,7 +222,7 @@ However, we will need to perform code-generation for Apex which is statically ty
 
 ## Deploy the updated code
 1. First, let's increase the debug log level in the Heroku app.<br>
-    Run the following command to set the DEBUG config variable, but replace `evening-badlands-29385` with the name of your own Heroku app.
+    From the command line in the project root, run the following command to set the DEBUG config variable, but replace `evening-badlands-29385` with the name of your own Heroku app.
     ```shell
     heroku config:set "DEBUG=*" --app evening-badlands-29385
     ```
