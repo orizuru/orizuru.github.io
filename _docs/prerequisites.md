@@ -89,6 +89,10 @@ Orizuru tools are installed using NPM. Run the following on the command line:
 npm install @financialforcedev/orizuru-tools --global
 ```
 
+You may receive an EACCES error when you try to install a package globally.
+This indicates that you do not have permission to write to the directories that npm uses to store global packages and commands.
+Refer to the [npm docs for fixing permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions) to resolve this.
+
 You can check if you already have it by running the following command on the command line.
 ```shell
 orizuru -v

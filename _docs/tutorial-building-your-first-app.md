@@ -90,6 +90,7 @@ You'll notice that your empty directory isn't so empty now - let's take a closer
     ```shell
     orizuru deploy
     ```
+    * Note: Make sure you have verified your Heroku account with your credit card details, or this step will fail!
 1. You will be asked which Heroku app to deploy to. You can either create a new one, or choose an existing one.<br>
     If you are part of any Heroku enterprise teams, you can create an app in that team.<br>
     For this tutorial, choose `<<Create new Heroku App>>`.
