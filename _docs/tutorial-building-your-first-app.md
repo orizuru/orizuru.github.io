@@ -247,7 +247,7 @@ However, we will need to perform code-generation for Apex which is statically ty
     sfdx force:org:open
     ```
 1. Open your app from the [Heroku Dashboard](https://dashboard.heroku.com).
-    1. In the **More** menu at the top right, click on **View Logs**.
+    * In the **More** menu at the top right, click on **View Logs**.
 1. In the scratch org, in the **Setup** menu at the top right (i.e. the gear icon), click on Developer Console.
 1. In the Developer Console, in the **Debug** menu at the top, click on **Open Execute Anonymous Window**.
 1. Copy/paste the code below into the Execute Anonymous Window.
@@ -267,7 +267,7 @@ However, we will need to perform code-generation for Apex which is statically ty
     > 2017-11-23T13:07:52.710244+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT boilerplate:worker:log Handler received com.example.FullName event. <br><br>
     > 2017-11-23T13:07:52.711212+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log Handled event for schema 'api/fullname'... <br><br>
     > 2017-11-23T13:07:52.711940+00:00 app[worker.1]: Thu, 23 Nov 2017 13:07:52 GMT fullname-handler:log {"first":"Ori","last":"Zuru"}
-    1. Note: You may receive a 401 (Unauthorized) error while the Connected App is replicated across Salesforce instances. Try again in 5 minutes if you see logging like this:
+    * Note: You may receive a 401 (Unauthorized) error while the Connected App is replicated across Salesforce instances. Try again in 5 minutes if you see logging like this:
         > 2017-11-23T13:07:52.698250+00:00 heroku[router]: at=info method=POST path="/api/fullname" host=evening-badlands-29385.herokuapp.com request_id=6ae3e116-d2d6-4507-98d2-8a615606f269 fwd="85.222.130.8" dyno=web.1 connect=0ms service=620ms status=401 bytes=415 protocol=https
 
 For the third time, congratulations!
