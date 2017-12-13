@@ -14,3 +14,5 @@ doc-groups:
     url: /docs/prerequisites/
   - title: Building Your First App
     url: /docs/tutorial-building-your-first-app/
+  - title: Troubleshooting
+    url: /docs/troubleshooting/
