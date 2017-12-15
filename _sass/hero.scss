@@ -1,0 +1,27 @@
+.page-header {
+    background-color: $medium-blue;
+    background-image: linear-gradient(120deg, $ink, darken($black, 20%));
+    -webkit-font-smoothing: antialiased;
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 3rem 0;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    height: auto;
+    @media screen and (min-width: 64em) {
+        width: 275px;
+    }
+    @media screen and (min-width: 42em) and (max-width: 64em) {
+        width: 250px;
+    }
+    @media screen and (max-width: 42em) {
+        width: 200px;
+    }
+}

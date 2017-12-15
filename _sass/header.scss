@@ -1,53 +1,37 @@
-.page-header {
-    background-color: $medium-blue;
-    background-image: linear-gradient(120deg, $light-blue, darken($light-blue, 20%));
-    -webkit-font-smoothing: antialiased;
-}
-
-.top-bar {
+.navbar {
+    background-color: $purple;
+    line-height: 3rem;
+    font-size: 1.1rem;
+    color: $snow;
+    background-image: url("/assets/images/header-background.jpg");
+    background-size: cover;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0 3rem 0;
-    margin-bottom: 1rem;
-}
-
-.logo {
-    height: auto;
-    @media screen and (min-width: 64em) {
-        width: 275px;
+    flex-direction: row;
+    * {
+        padding: 0 0.5rem;
     }
-    @media screen and (min-width: 42em) and (max-width: 64em) {
-        width: 250px;
+    span {
+        font-weight: bold;
+        padding-left: 0;
+        @media screen and (max-width: 42rem) {
+            display: none;
+        }
     }
-    @media screen and (max-width: 42em) {
-        width: 200px;
+    img {
+        height: 2em;
+        vertical-align: middle;
     }
-}
-
-.header-nav {
-    display: -webkit-flex;
-    -webkit-flex-wrap: wrap;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.header-nav a {
-    font-size: 1.1rem;
-    line-height: 1.1rem;
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.3rem;
-    color: $snow;
-    text-decoration: none;
-    margin: 10px;
-    &.active,
-    &:hover {
-        background-color: $blue-glass;
+    a {
+        color: $snow;
+        text-decoration: none;
+        &:hover,&.active {
+            color: $baby-blue;
+        }
     }
-    &.active {
-        border: 1px solid $medium-blue;
-        pointer-events: none;
+    nav {
+        justify-content: flex-end;
+        flex-grow: 1;
+        overflow: hidden;
     }
 }
